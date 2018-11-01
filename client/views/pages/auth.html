@@ -1,0 +1,71 @@
+<!-- 
+    Real Time chatting app
+    @author Shashank Tiwari 
+-->
+<div class="auth-page">
+    <div class="container auth-container">
+        <h2 id="h2">Selamat Datang di Watsap</h2>
+        <img id="logo" src="c.png"/>
+        <div class="auth">
+
+            <!-- Auth Page Header Tabs start -->
+            <div class="auth-header">
+                <button type="button" class="btn btn-success auth-header-btn" ng-click="active = 0">Masuk</button>
+                <button type="button" class="btn btn-success auth-header-btn" ng-click="active = 1">Daftar</button>
+            </div>
+            <!-- Auth Page Header Tabs ends -->
+
+            <div class="auth-content">
+                <uib-tabset active="active">
+                    <!-- Login Tab starts -->
+                    <uib-tab index="0">
+                        <div class="login">
+                            <div class="form-group">
+                                <input type="username" class="form-control" id="username" placeholder="Nama" >
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="login-password" placeholder="Sandi" >
+                            </div>
+                            <button class="btn btn-success" ng-click="loginUser()">Masuk</button>
+                            
+                        </div>
+                    </uib-tab>
+                    <!-- Login Tab ends -->
+                    <!-- Register Tab starts -->
+                    <uib-tab index="1">
+                        <div class="register">
+                            <div class="form-group">
+                                <input type="username" 
+                                    class="form-control" 
+                                    id="username" 
+                                    placeholder="Nama"
+                                    autocomplete="off"
+                                    ng-model="data.regUsername" 
+                                    ng-keyup="initiateCheckUserName()" 
+                                    ng-keydown="clearCheckUserName()" 
+                                />
+                                <div ng-show='data.usernameAvailable'>
+                                    <br>
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>{{ data.regUsername }}</strong> Nama sudah dipakai.
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+
+                                <input type="password" 
+                                    class="form-control" 
+                                    id="reg-password" 
+                                    placeholder="Sandi"
+                                    ng-model="data.regPassword">
+                            </div>
+                            <button class="btn btn-success" ng-click="registerUser()">Daftar</button>
+                        </div>
+                    </uib-tab>
+                    <!-- Register Tab ends -->
+                </uib-tabset>
+            </div>        
+        </div>
+    </div>
+</div>
