@@ -1,7 +1,3 @@
-/**
-* Real Time chatting app
-* @author Shashank Tiwari
-*/
 'use strict';
 
 const express = require("express");
@@ -12,7 +8,6 @@ const bodyParser = require('body-parser');
 const socketEvents = require('./utils/socket'); 
 const routes = require('./utils/routes'); 
 const config = require('./utils/config'); 
-
 
 class Server{
 

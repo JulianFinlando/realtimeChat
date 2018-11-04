@@ -21,10 +21,10 @@
                     <uib-tab index="0">
                         <div class="login">
                             <div class="form-group">
-                                <input type="username" class="form-control" id="username" placeholder="Nama" >
+                                <input type="username" class="form-control" id="username" placeholder="Nama" ng-model="data.loginUsername" >
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="login-password" placeholder="Sandi" >
+                                <input type="password" class="form-control" id="login-password" placeholder="Sandi" ng-model="data.loginPassword">
                             </div>
                             <button class="btn btn-success" ng-click="loginUser()">Masuk</button>
                             

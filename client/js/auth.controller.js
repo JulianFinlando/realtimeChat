@@ -59,6 +59,7 @@ app.controller('authController', function ($scope, $location, $timeout, appServi
         .then((response) => {
             $location.path(`/home/${response.userId}`);
             $scope.$apply();
+            alert("Selamat Bergabung");
         })
         .catch((error) => {
             alert(error.message);

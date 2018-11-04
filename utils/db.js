@@ -1,12 +1,3 @@
-/**
-* Real Time chatting app
-* @author Shashank Tiwari
-*/
-
-/**
-* Source code by https://codeburst.io/@MichalMecinski
-* https://codeburst.io/node-js-mysql-and-promises-4c3be599909b
-*/
 
 const mysql = require('mysql');
 

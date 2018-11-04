@@ -1,20 +1,16 @@
-/**
-* Real Time chatting app
-* @author Shashank Tiwari
-*/
 
 'user strict';
 
 app.controller('homeController', function ($scope, $routeParams, $location, appService){
     
     const UserId = $routeParams.userId;
-
+    
     $scope.data = {
         username: '',
         chatlist: [],
         selectedFriendId: null,
         selectedFriendName: null,
-        messages: []
+        messages: [],
     };
 
     appService.connectSocketServer(UserId);
@@ -126,14 +122,17 @@ app.controller('homeController', function ($scope, $routeParams, $location, appS
             if (friendData.length > 0) {
 
                 toUserId = friendData[0]['id'];
-                toSocketId = friendData[0]['socketid'];            
+                toSocketId = friendData[0]['socketid']; 
+                waktu = new Date();           
 
                 let messagePacket = {
                     message: document.querySelector('#message').value,
                     fromUserId: UserId,
                     toUserId: toUserId,
-                    toSocketId: toSocketId
+                    toSocketId: toSocketId,
+                    waktu:waktu
                 };
+
                 $scope.data.messages.push(messagePacket);
                 appService.socketEmit(`add-message`, messagePacket);
 
