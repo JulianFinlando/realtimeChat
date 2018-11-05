@@ -122,17 +122,19 @@ app.controller('homeController', function ($scope, $routeParams, $location, appS
             if (friendData.length > 0) {
 
                 toUserId = friendData[0]['id'];
-                toSocketId = friendData[0]['socketid']; 
-                waktu = new Date();           
+                toSocketId = friendData[0]['socketid'];
+
+                let d= new Date();
+                let dat = d.toString();
 
                 let messagePacket = {
-                    message: document.querySelector('#message').value,
+                    message: document.querySelector('#message').value+"         "+dat,
                     fromUserId: UserId,
                     toUserId: toUserId,
                     toSocketId: toSocketId,
-                    waktu:waktu
+                    menit: dat
                 };
-
+                
                 $scope.data.messages.push(messagePacket);
                 appService.socketEmit(`add-message`, messagePacket);
 
