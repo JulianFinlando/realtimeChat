@@ -99,6 +99,18 @@ class Helper{
 		}		
 	}
 
+	async insertImages(params){
+		try {
+			return await this.db.query(
+				"INSERT INTO message (`from_user_id`,`to_user_id`,`image`) values (?,?,?)",
+				[params.fromUserId, params.toUserId, params.image]
+			);
+		} catch (error) {
+			console.warn(error);
+			return null;
+		}
+	}
+
 	async getMessages(userId, toUserId){
 		try {
 			return await this.db.query(

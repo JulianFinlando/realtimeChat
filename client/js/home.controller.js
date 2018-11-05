@@ -101,6 +101,49 @@ app.controller('homeController', function ($scope, $routeParams, $location, appS
         });
     }
 
+    $scope.sendImage = (event2) => {
+        
+        if (event.keyCode === 13) {
+
+            let toUserId = null;
+            let toSocketId = null;
+
+            /* Fetching the selected User from the chat list starts */
+            let selectedFriendId = $scope.data.selectedFriendId;
+            if (selectedFriendId === null) {
+                return null;
+            }
+            friendData = $scope.data.chatlist.filter((obj) => {
+                return obj.id === selectedFriendId;
+            });
+            /* Fetching the selected User from the chat list ends */
+            
+            /* Emmiting socket event to server with Message, starts */
+            if (friendData.length > 0) {
+
+                toUserId = friendData[0]['id'];
+                toSocketId = friendData[0]['socketid'];
+
+                let imagePacket = {
+            image: document.querySelector('#image').value,
+                    fromUserId: UserId,
+                    toUserId: toUserId,
+                    toSocketId: toSocketId,
+                    menit: dat
+                };
+                
+                $scope.data.messages.push(imagePacket);
+                appService.socketEmit(`add-image`, imagePacket);
+
+                document.querySelector('#image').value = '';
+                appService.scrollToBottom();
+            }else {
+                alert('Unexpected Error Occured,Please contact Admin');
+            }
+            /* Emmiting socket event to server with Message, ends */
+        }
+    }
+
     $scope.sendMessage = (event) => {
 
         if (event.keyCode === 13) {

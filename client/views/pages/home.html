@@ -56,6 +56,14 @@
                             ng-keydown="sendMessage($event)"
                         ></textarea>
                     </div>
+                    <div>
+                        <label class="btn-upload">
+                        <input id="image" type="file" name="fileupload">
+                        <button class="btn">Upload Image</button>
+                        
+                        </label>
+                    </div>
+                    <button class="btn" ng-click="sendImage($event2)">Send</button>
                 </div>
             </div>
             <!-- Message Area Markup ends -->

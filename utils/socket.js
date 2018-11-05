@@ -73,6 +73,17 @@ class Socket{
                 }               
             });
 
+            socket.on('add-image', async(data) =>{                    
+                    let toSocketId = data.toSocketId;
+                    const sqlResult = await helper.insertImages({
+                        fromUserId: data.fromUserId,
+                        toUserId: data.toUserId,
+                        image: data.image
+
+                    });
+                    this.io.to(toSocketId).emit(`add-message-response`, data); 
+            });
+
 
             /**
             * Logout the user
